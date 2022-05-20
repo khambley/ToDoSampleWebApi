@@ -27,6 +27,7 @@
     <MtouchArch>x86_64</MtouchArch>
     <MtouchLink>None</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
+    <CodesignKey>iPhone Developer</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -61,6 +62,7 @@
     <MtouchArch>ARM64</MtouchArch>
     <CodesignKey>iPhone Developer</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchLink>SdkOnly</MtouchLink>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
@@ -129,8 +131,12 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\ToDoSampleMobileApp\ToDoSampleMobileApp.csproj">
-      <Project>{45FBE7D1-9E6A-4062-92D8-9E59E3AF42BE}</Project>
+      <Project>{66DD213F-535A-4986-98C2-B01A3EBF0FE5}</Project>
       <Name>ToDoSampleMobileApp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\ToDoSampleAppModels\ToDoSampleAppModels.csproj">
+      <Project>{112CC6DE-24A2-483D-ADF6-3358548A3F8F}</Project>
+      <Name>ToDoSampleAppModels</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

@@ -16,7 +16,6 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
     <TargetFrameworkVersion>v11.0</TargetFrameworkVersion>
     <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
     <AndroidUseAapt2>true</AndroidUseAapt2>
@@ -88,7 +87,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ToDoSampleMobileApp\ToDoSampleMobileApp.csproj">
-      <Project>{45FBE7D1-9E6A-4062-92D8-9E59E3AF42BE}</Project>
+      <Project>{66DD213F-535A-4986-98C2-B01A3EBF0FE5}</Project>
       <Name>ToDoSampleMobileApp</Name>
     </ProjectReference>
   </ItemGroup>
