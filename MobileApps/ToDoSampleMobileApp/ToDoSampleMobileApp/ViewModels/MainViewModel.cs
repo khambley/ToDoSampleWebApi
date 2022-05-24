@@ -2,12 +2,16 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using ToDoSampleAppModels;
+using ToDoSampleMobileApp.Services;
 
 namespace ToDoSampleMobileApp.ViewModels
 {
     public class MainViewModel : INotifyPropertyChanged
     {
+        private DataService _dataService = new DataService();
+
         private List<TodoItem> _todoItems;
 
         public List<TodoItem> TodoItems
@@ -32,25 +36,9 @@ namespace ToDoSampleMobileApp.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        private void GetToDoItems()
+        private async Task GetToDoItems()
         {
-            TodoItems = new List<TodoItem>
-            {
-                new TodoItem{
-                    Id = 1,
-                    Title = "Call or go to YMCA and find out about May bill",
-                    IsCompleted = false,
-                    DueDate = DateTime.Now,
-                    UpdatedAt = DateTime.Now
-                },
-                new TodoItem{
-                    Id = 2,
-                    Title = "Get a new pill box",
-                    IsCompleted = false,
-                    DueDate = DateTime.Parse("2022-05-22"),
-                    UpdatedAt = DateTime.Now
-                }
-            };
+            TodoItems = await _dataService.GetTodoItems();
         }
     }
 }
