@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using ToDoSampleAppModels;
@@ -22,6 +23,18 @@ namespace ToDoSampleMobileApp.Services
             var toDoItems = JsonConvert.DeserializeObject<List<TodoItem>>(json);
 
             return toDoItems;
+        }
+        public async Task PostToDoItem(TodoItem todoItem)
+        {
+            var httpClient = new HttpClient();
+
+            var json = JsonConvert.SerializeObject(todoItem);
+
+            StringContent content = new StringContent(json);
+
+            content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+            var result = await httpClient.PostAsync(baseUrl, content);
         }
     }
 }
