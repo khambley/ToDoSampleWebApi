@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="ToDoSampleMobileApp.Views.AddToDoPage"
+    xmlns:viewModels="clr-namespace:ToDoSampleMobileApp.ViewModels">
+
+    <ContentPage.BindingContext>
+        <viewModels:MainViewModel />
+    </ContentPage.BindingContext>
+
+    <!--<StackLayout>
+        <Entry Text="{Binding SelectedTodoItem.Title}" />
+
+        <Switch IsToggled="{Binding SelectedTodoItem.IsCompleted}" />
+
+        <DatePicker Date="{Binding SelectedTodoItem.DueDate}" />
+
+        <Button Text="Add Todo Item"
+                Command="{Binding SendToDoItemCommand}" />
+    </StackLayout>-->
+    <TableView Intent="Form">
+        <TableRoot>
+            <TableSection Title="Add a Task">
+                <ViewCell>
+                    <StackLayout Orientation="Horizontal"
+                                 BackgroundColor="Blue">
+                        <Label Text="Task:"
+                               Padding="20,10,35,5"
+                               TextColor="White"
+                               FontAttributes="Bold" />
+                        <Entry Text="{Binding SelectedTodoItem.Title}"
+                               HorizontalOptions="Start"
+                               WidthRequest="300"
+                               ClearButtonVisibility="WhileEditing" />
+                    </StackLayout>
+                </ViewCell>
+                <ViewCell>
+                    <StackLayout Orientation="Horizontal"
+                                 BackgroundColor="White">
+                        <Label Text="Completed?"
+                               Padding="20,10,20,5"
+                               FontAttributes="Bold"/>
+                        <Switch IsToggled="{Binding SelectedTodoItem.IsCompleted}"
+                                HorizontalOptions="EndAndExpand"
+                                Margin="0,5,20,5"/>
+                    </StackLayout>
+                </ViewCell>
+                <ViewCell>
+                    <StackLayout Orientation="Horizontal"
+                                 BackgroundColor="Red">
+                        <Label Text="Due Date:"
+                               Padding="20,10,0,5"
+                               TextColor="White"
+                               FontAttributes="Bold" />
+                        <DatePicker Date="{Binding SelectedTodoItem.DueDate}"
+                                    HorizontalOptions="Start"
+                                    WidthRequest="300"
+                                    />
+                    </StackLayout>
+                </ViewCell>
+                <ViewCell>
+                    <StackLayout>
+                        <Button Text="Add Task"
+                                Command="{Binding SendToDoItemCommand}"
+                                HorizontalOptions="FillAndExpand"
+                                BackgroundColor="Blue"
+                                TextColor="White"
+                                FontAttributes="Bold"
+                                Padding="20"
+                                Margin="20,20,20,0" />
+                    </StackLayout>
+                </ViewCell>
+            </TableSection>
+        </TableRoot>
+    </TableView>
+
+</ContentPage>

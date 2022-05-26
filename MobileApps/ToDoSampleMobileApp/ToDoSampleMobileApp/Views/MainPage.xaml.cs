@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ToDoSampleAppModels;
 using ToDoSampleMobileApp.ViewModels;
+using ToDoSampleMobileApp.Views;
 using Xamarin.Forms;
 
 namespace ToDoSampleMobileApp
@@ -18,6 +19,12 @@ namespace ToDoSampleMobileApp
             //BindingContext = viewModel;
             
         }
+
+        private async void Button_Clicked(System.Object sender, System.EventArgs e)
+        {
+            await Navigation.PushAsync(new AddToDoPage());
+        }
+
         //protected override void OnAppearing()
         //{
         //    base.OnAppearing();

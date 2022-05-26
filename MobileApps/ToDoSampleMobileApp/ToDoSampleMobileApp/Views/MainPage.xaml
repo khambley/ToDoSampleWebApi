@@ -7,7 +7,12 @@
         <viewModels:MainViewModel />
     </ContentPage.BindingContext>
 
-    <ListView HasUnevenRows="True"
+    <StackLayout>
+
+        <Button Text="Add a Todo Item"
+                Clicked="Button_Clicked"/>
+
+        <ListView HasUnevenRows="True"
               ItemsSource="{Binding TodoItems}">
         <ListView.ItemTemplate>
             <DataTemplate>
@@ -23,5 +28,8 @@
         </ListView.ItemTemplate>
 
     </ListView>
+    </StackLayout>
+
+    
 
 </ContentPage>
