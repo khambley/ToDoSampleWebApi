@@ -16,7 +16,7 @@ namespace ToDoSampleMobileApp.ViewModels
 
         private List<TodoItem> _todoItems;
 
-        public TodoItem SelectedTodoItem { get; set; }
+        
 
 
         public List<TodoItem> TodoItems
@@ -29,11 +29,7 @@ namespace ToDoSampleMobileApp.ViewModels
             }
         }
 
-        public ICommand SendToDoItemCommand => new Command(async () =>
-        {
-            SelectedTodoItem.UpdatedAt = DateTime.Now;
-            await _dataService.PostToDoItem(SelectedTodoItem);
-        }); 
+         
 
         // Is this the same thing as above?
         //public async Task SendToDoCommand()
@@ -43,7 +39,7 @@ namespace ToDoSampleMobileApp.ViewModels
 
         public MainViewModel()
         {
-            SelectedTodoItem = new TodoItem();
+            
             GetToDoItems();
         }
 

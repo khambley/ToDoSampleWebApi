@@ -6,7 +6,7 @@
     xmlns:viewModels="clr-namespace:ToDoSampleMobileApp.ViewModels">
 
     <ContentPage.BindingContext>
-        <viewModels:MainViewModel />
+        <viewModels:AddToDoViewModel />
     </ContentPage.BindingContext>
 
     <!--<StackLayout>
