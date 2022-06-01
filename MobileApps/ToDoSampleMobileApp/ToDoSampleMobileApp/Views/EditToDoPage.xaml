@@ -5,13 +5,13 @@
     x:Class="ToDoSampleMobileApp.Views.EditToDoPage"
     xmlns:viewModels="clr-namespace:ToDoSampleMobileApp.ViewModels">
 
-    <ContentPage.BindingContext>
+    <!--<ContentPage.BindingContext>
         <viewModels:EditToDoViewModel />
-    </ContentPage.BindingContext>
+    </ContentPage.BindingContext>-->
 
     <TableView Intent="Form">
         <TableRoot>
-            <TableSection Title="Add a Task">
+            <TableSection Title="Edit a Task">
                 <ViewCell>
                     <StackLayout Orientation="Horizontal"
                                  BackgroundColor="Blue">
@@ -51,8 +51,8 @@
                 </ViewCell>
                 <ViewCell>
                     <StackLayout>
-                        <Button Text="Add Task"
-                                Command="{Binding EditToDoItemCommand}"
+                        <Button Text="Edit Task"
+                                Command="{Binding EditTodoItemCommand}"
                                 HorizontalOptions="FillAndExpand"
                                 BackgroundColor="Blue"
                                 TextColor="White"

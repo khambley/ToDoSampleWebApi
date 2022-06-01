@@ -12,7 +12,7 @@ namespace ToDoSampleMobileApp.ViewModels
 
         public TodoItem SelectedTodoItem { get; set; }
 
-        public ICommand EditTodoCommand => new Command(async () =>
+        public ICommand EditTodoItemCommand => new Command(async () =>
         {
             SelectedTodoItem.UpdatedAt = DateTime.UtcNow;
             await _dataService.PutToDoItem(SelectedTodoItem.Id, SelectedTodoItem);

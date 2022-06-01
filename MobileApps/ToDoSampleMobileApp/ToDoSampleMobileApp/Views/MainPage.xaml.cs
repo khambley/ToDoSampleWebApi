@@ -27,6 +27,13 @@ namespace ToDoSampleMobileApp
 
         void ListView_ItemTapped(System.Object sender, Xamarin.Forms.ItemTappedEventArgs e)
         {
+            // Get todoitem from MainPage
+            var todo = e.Item as TodoItem;
+
+            // Pass todoitem to EditToDoPage
+            // First, Navigate to page
+            Navigation.PushAsync(new EditToDoPage(todo));
+
         }
         //protected override void OnAppearing()
         //{
