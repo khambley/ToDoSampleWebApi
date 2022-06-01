@@ -25,6 +25,9 @@ namespace ToDoSampleMobileApp
             await Navigation.PushAsync(new AddToDoPage());
         }
 
+        void ListView_ItemTapped(System.Object sender, Xamarin.Forms.ItemTappedEventArgs e)
+        {
+        }
         //protected override void OnAppearing()
         //{
         //    base.OnAppearing();

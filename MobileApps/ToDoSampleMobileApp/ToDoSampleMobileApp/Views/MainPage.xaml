@@ -13,7 +13,8 @@
                 Clicked="Button_Clicked"/>
 
         <ListView HasUnevenRows="True"
-              ItemsSource="{Binding TodoItems}">
+              ItemsSource="{Binding TodoItems}"
+              ItemTapped="ListView_ItemTapped">
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
