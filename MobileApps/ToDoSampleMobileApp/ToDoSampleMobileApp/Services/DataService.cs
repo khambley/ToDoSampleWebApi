@@ -24,6 +24,7 @@ namespace ToDoSampleMobileApp.Services
 
             return toDoItems;
         }
+
         public async Task PostToDoItem(TodoItem todoItem)
         {
             var httpClient = new HttpClient();
@@ -50,6 +51,17 @@ namespace ToDoSampleMobileApp.Services
             content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
             var result = await httpClient.PutAsync(baseUrl + id, content);
+        }
+
+        public async Task DeleteToDoItem(int id)
+        {
+            var httpClient = new HttpClient();
+
+            // DeleteAsync actually returns a response, not json string.
+            var response = await httpClient.DeleteAsync(baseUrl + id);
+
+            //You can call this method from the response, and create a DisplayAlert if the request was successful.
+            //response.IsSuccessStatusCode
         }
     }
 }

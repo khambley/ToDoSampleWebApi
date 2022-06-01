@@ -49,19 +49,31 @@
                                     />
                     </StackLayout>
                 </ViewCell>
-                <ViewCell>
-                    <StackLayout>
+                <ViewCell Height="100">
+                    <StackLayout Orientation="Horizontal"
+                                 Padding="0,10,0,0">
                         <Button Text="Edit Task"
                                 Command="{Binding EditTodoItemCommand}"
-                                HorizontalOptions="FillAndExpand"
+                                HorizontalOptions="StartAndExpand"
                                 BackgroundColor="Blue"
                                 TextColor="White"
                                 FontAttributes="Bold"
-                                Padding="20"
-                                Margin="20,20,20,0" />
+                                Padding="70,20,70,20"
+                                 />
+
+                        <Button Text="Delete Task"
+                                Command="{Binding DeleteTodoItemCommand}"
+                                HorizontalOptions="EndAndExpand"
+                                BackgroundColor="Black"
+                                TextColor="White"
+                                FontAttributes="Bold"
+                                Padding="60,20,60,20"
+                                 />
                     </StackLayout>
                 </ViewCell>
+             
             </TableSection>
         </TableRoot>
     </TableView>
+
 </ContentPage>

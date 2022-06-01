@@ -18,6 +18,13 @@ namespace ToDoSampleMobileApp.ViewModels
             await _dataService.PutToDoItem(SelectedTodoItem.Id, SelectedTodoItem);
         });
 
+        public ICommand DeleteTodoItemCommand => new Command(async () =>
+        {
+            SelectedTodoItem.UpdatedAt = DateTime.UtcNow;
+
+            await _dataService.DeleteToDoItem(SelectedTodoItem.Id);
+        });
+
         public EditToDoViewModel()
         {
             SelectedTodoItem = new TodoItem();
