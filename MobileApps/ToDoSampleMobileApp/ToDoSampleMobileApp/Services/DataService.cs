@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using Acr.UserDialogs;
 using Newtonsoft.Json;
 using ToDoSampleAppModels;
 
@@ -53,15 +54,26 @@ namespace ToDoSampleMobileApp.Services
             var result = await httpClient.PutAsync(baseUrl + id, content);
         }
 
-        public async Task DeleteToDoItem(int id)
+        public async Task<HttpResponseMessage> DeleteToDoItem(int id)
         {
             var httpClient = new HttpClient();
 
             // DeleteAsync actually returns a response, not json string.
             var response = await httpClient.DeleteAsync(baseUrl + id);
 
-            //You can call this method from the response, and create a DisplayAlert if the request was successful.
-            //response.IsSuccessStatusCode
+            return response;
         }
+
+        public async Task ShowMessage(string header, string message)
+        {
+            var config = new AlertConfig()
+            {
+                Title = header,
+                Message = message,
+                OkText = "OK",
+            };
+            await UserDialogs.Instance.AlertAsync(config);
+        }
+
     }
 }

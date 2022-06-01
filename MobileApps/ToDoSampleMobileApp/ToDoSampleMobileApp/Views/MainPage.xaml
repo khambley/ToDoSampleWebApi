@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ToDoSampleMobileApp.MainPage"
              xmlns:viewModels="clr-namespace:ToDoSampleMobileApp.ViewModels">
+
     <ContentPage.BindingContext>
         <viewModels:MainViewModel />
     </ContentPage.BindingContext>
@@ -10,7 +11,20 @@
     <StackLayout>
 
         <Button Text="Add a Todo Item"
-                Clicked="Button_Clicked"/>
+                HorizontalOptions="FillAndExpand"
+                Clicked="Button_Clicked"
+                BackgroundColor="Blue"
+                TextColor="White"
+                FontAttributes="Bold"
+                Padding="20" />
+
+        <Button Text="Refresh List"
+                HorizontalOptions="FillAndExpand"
+                Command="{Binding RefreshCommand}"
+                BackgroundColor="Green"
+                TextColor="White"
+                FontAttributes="Bold"
+                Padding="20" />
 
         <ListView HasUnevenRows="True"
               ItemsSource="{Binding TodoItems}"

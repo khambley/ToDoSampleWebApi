@@ -29,7 +29,10 @@ namespace ToDoSampleMobileApp.ViewModels
             }
         }
 
-         
+        public ICommand RefreshCommand => new Command(async () =>
+        {
+            await GetToDoItems();
+        });
 
         // Is this the same thing as above?
         //public async Task SendToDoCommand()

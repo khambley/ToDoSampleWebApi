@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using ToDoSampleAppModels;
 using ToDoSampleMobileApp.Services;
@@ -22,13 +23,26 @@ namespace ToDoSampleMobileApp.ViewModels
         {
             SelectedTodoItem.UpdatedAt = DateTime.UtcNow;
 
-            await _dataService.DeleteToDoItem(SelectedTodoItem.Id);
+            var response = await _dataService.DeleteToDoItem(SelectedTodoItem.Id);
+
+            if (response.IsSuccessStatusCode)
+            {
+                await ShowAlert();
+            }
+            
         });
 
         public EditToDoViewModel()
         {
             SelectedTodoItem = new TodoItem();
             
+        }
+
+        private async Task ShowAlert()
+        {
+            var message = "Your ToDo item has been deleted successfully.";
+
+            await _dataService.ShowMessage("Item Deleted", message);
         }
     }
     
