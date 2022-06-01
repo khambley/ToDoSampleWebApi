@@ -41,7 +41,7 @@ namespace ToDoSampleMobileApp.Services
 
         // api/todo/5 - id is passed as a query string parameter
         // we add it on to the url and call the PutAsync method.
-        public async Task PutToDoItem(int id, TodoItem todoItem)
+        public async Task<HttpResponseMessage> PutToDoItem(int id, TodoItem todoItem)
         {
             var httpClient = new HttpClient();
 
@@ -51,7 +51,9 @@ namespace ToDoSampleMobileApp.Services
 
             content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
-            var result = await httpClient.PutAsync(baseUrl + id, content);
+            var response = await httpClient.PutAsync(baseUrl + id, content);
+
+            return response;
         }
 
         public async Task<HttpResponseMessage> DeleteToDoItem(int id)

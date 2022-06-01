@@ -16,7 +16,12 @@ namespace ToDoSampleMobileApp.ViewModels
         public ICommand EditTodoItemCommand => new Command(async () =>
         {
             SelectedTodoItem.UpdatedAt = DateTime.UtcNow;
-            await _dataService.PutToDoItem(SelectedTodoItem.Id, SelectedTodoItem);
+            var response = await _dataService.PutToDoItem(SelectedTodoItem.Id, SelectedTodoItem);
+            if (response.IsSuccessStatusCode)
+            {
+                await ShowEditConfirmMessage();
+            }
+
         });
 
         public ICommand DeleteTodoItemCommand => new Command(async () =>
@@ -27,7 +32,7 @@ namespace ToDoSampleMobileApp.ViewModels
 
             if (response.IsSuccessStatusCode)
             {
-                await ShowAlert();
+                await ShowDeleteConfirmMessage();
             }
             
         });
@@ -38,11 +43,18 @@ namespace ToDoSampleMobileApp.ViewModels
             
         }
 
-        private async Task ShowAlert()
+        private async Task ShowDeleteConfirmMessage()
         {
             var message = "Your ToDo item has been deleted successfully.";
 
             await _dataService.ShowMessage("Item Deleted", message);
+        }
+
+        private async Task ShowEditConfirmMessage()
+        {
+            var message = "Your ToDo item has been edited successfully.";
+
+            await _dataService.ShowMessage("Item Edited", message);
         }
     }
     
