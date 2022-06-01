@@ -18,17 +18,20 @@
                 FontAttributes="Bold"
                 Padding="20" />
 
-        <Button Text="Refresh List"
+        <!--<Button Text="Refresh List"
                 HorizontalOptions="FillAndExpand"
                 Command="{Binding RefreshCommand}"
                 BackgroundColor="Green"
                 TextColor="White"
                 FontAttributes="Bold"
-                Padding="20" />
+                Padding="20" />-->
 
         <ListView HasUnevenRows="True"
-              ItemsSource="{Binding TodoItems}"
-              ItemTapped="ListView_ItemTapped">
+                  ItemsSource="{Binding TodoItems}"
+                  ItemTapped="ListView_ItemTapped"
+                  IsPullToRefreshEnabled="True"
+                  RefreshCommand="{Binding RefreshCommand}"
+                  IsRefreshing="{Binding IsRefreshing}">
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>

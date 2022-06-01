@@ -15,10 +15,6 @@ namespace ToDoSampleMobileApp.ViewModels
         private DataService _dataService = new DataService();
 
         private List<TodoItem> _todoItems;
-
-        
-
-
         public List<TodoItem> TodoItems
         {
             get => _todoItems;
@@ -29,20 +25,27 @@ namespace ToDoSampleMobileApp.ViewModels
             }
         }
 
+        private bool _isRefreshing;
+        public bool IsRefreshing
+        {
+            get => _isRefreshing;
+            set
+            {
+                _isRefreshing = value;
+                OnPropertyChanged();
+            }
+        }
+
         public ICommand RefreshCommand => new Command(async () =>
         {
             await GetToDoItems();
         });
 
-        // Is this the same thing as above?
-        //public async Task SendToDoCommand()
-        //{
-        //    await _dataService.PostToDoItem(SelectedTodoItem);
-        //}
+
 
         public MainViewModel()
         {
-            
+
             GetToDoItems();
         }
 
@@ -55,7 +58,11 @@ namespace ToDoSampleMobileApp.ViewModels
 
         private async Task GetToDoItems()
         {
+            IsRefreshing = true;
+
             TodoItems = await _dataService.GetTodoItems();
+
+            IsRefreshing = false;
         }
     }
 }
